@@ -41,6 +41,7 @@ class _MyAppState extends State<MyApp> {
                         }else{
                           currentPlayer = "X";
                         }
+                        print(board[0]);
                       });
                     },
                     child: Container(
@@ -53,7 +54,15 @@ class _MyAppState extends State<MyApp> {
                   ),
                    GestureDetector(
                     onTap: () {
-                      print("Square 2 tapped");
+                     setState(() {
+                        board[1]=currentPlayer;
+                        if (currentPlayer == "X") {
+                          currentPlayer = "O";
+                        }else{
+                          currentPlayer = "X";
+                        }
+                        print(board[1]);
+                      });
                     },
                     child: Container(
                     width: 100,
@@ -66,7 +75,15 @@ class _MyAppState extends State<MyApp> {
                   
                   GestureDetector(
                     onTap: () {
-                      print("Square 3 tapped");
+                      setState(() {
+                        board[2]=currentPlayer;
+                        if (currentPlayer == "X") {
+                          currentPlayer = "O";
+                        }else{
+                          currentPlayer = "X";
+                        }
+                        print(board[2]);
+                      });
                     },
                     child: Container(
                     width: 100,
@@ -82,7 +99,15 @@ class _MyAppState extends State<MyApp> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      print("Square 4 tapped");
+                      setState(() {
+                        board[3]=currentPlayer;
+                        if (currentPlayer == "X") {
+                          currentPlayer = "O";
+                        }else{
+                          currentPlayer = "X";
+                        }
+                        print(board[3]);
+                      });
                     },
                     child: Container(
                     width: 100,
@@ -94,7 +119,15 @@ class _MyAppState extends State<MyApp> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      print("Square 5 tapped");
+                      setState(() {
+                        board[4]=currentPlayer;
+                        if (currentPlayer == "X") {
+                          currentPlayer = "O";
+                        }else{
+                          currentPlayer = "X";
+                        }
+                        print(board[4]);
+                      });
                     },
                     child: Container(
                     width: 100,
@@ -106,7 +139,15 @@ class _MyAppState extends State<MyApp> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      print("Square 6 tapped");
+                      setState(() {
+                        board[5]=currentPlayer;
+                        if (currentPlayer == "X") {
+                          currentPlayer = "O";
+                        }else{
+                          currentPlayer = "X";
+                        }
+                        print(board[5]);
+                      });
                     },
                     child: Container(
                     width: 100,
@@ -122,7 +163,15 @@ class _MyAppState extends State<MyApp> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      print("Square 7 tapped");
+                      setState(() {
+                        board[6]=currentPlayer;
+                        if (currentPlayer == "X") {
+                          currentPlayer = "O";
+                        }else{
+                          currentPlayer = "X";
+                        }
+                        print(board[6]);
+                      });
                     },
                     child: Container(
                     width: 100,
@@ -134,7 +183,15 @@ class _MyAppState extends State<MyApp> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      print("Square 8 tapped");
+                      setState(() {
+                        board[7]=currentPlayer;
+                        if (currentPlayer == "X") {
+                          currentPlayer = "O";
+                        }else{
+                          currentPlayer = "X";
+                        }
+                        print(board[7]);
+                      });
                     },
                     child: Container(
                     width: 100,
@@ -146,7 +203,15 @@ class _MyAppState extends State<MyApp> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      print("Square 9 tapped");
+                      setState(() {
+                        board[8]=currentPlayer;
+                        if (currentPlayer == "X") {
+                          currentPlayer = "O";
+                        }else{
+                          currentPlayer = "X";
+                        }
+                        print(board[8]);
+                      });
                     },
                     child: Container(
                     width: 100,
