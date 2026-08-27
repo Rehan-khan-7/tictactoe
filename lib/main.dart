@@ -11,14 +11,15 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 }
-List<String> board = [
+
+
+class _MyAppState extends State<MyApp> {
+  List<String> board = [
   "","","",
   "","","",
   "","",""
 ];
 String currentPlayer = "X";
-
-class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
@@ -106,14 +107,15 @@ class _MyAppState extends State<MyApp> {
                     decoration: BoxDecoration(
                     border: Border.all(),
                     ),
-                  ),
+                  
                   child: Center(
-      child: Text(
-        board[2],
-        style: const TextStyle(
-          fontSize: 40,
+                  child: Text(
+                   board[2],
+                   style: const TextStyle(
+                  fontSize: 40,
         ),
       ),
+    ),
     ),
                   ),
                 ],
