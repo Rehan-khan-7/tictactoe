@@ -16,6 +16,7 @@ class _MyAppState extends State<MyApp> {
   String currentPlayer = "X";
   String winner = "";
   bool gameover = false;
+  bool draw = false;
   void checkWinner() {
     List<List<int>> winningPatterns = [
       [0, 1, 2],
@@ -49,6 +50,11 @@ class _MyAppState extends State<MyApp> {
 
         checkWinner();
 
+        if (!gameover && !board.contains("")) {
+          draw = true;
+          gameover = true;
+        }
+
         if (!gameover) {
           if (currentPlayer == "X") {
             currentPlayer = "O";
@@ -69,7 +75,11 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: [
               Text(
-                gameover ? "$winner wins!" : "Player $currentPlayer's turn",
+                winner.isNotEmpty
+                    ? "$winner wins!"
+                    : draw
+                    ? "Draw!"
+                    : "Player $currentPlayer's turn",
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
