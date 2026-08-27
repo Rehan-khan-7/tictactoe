@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
   bool draw = false;
   void resetGame() {
     setState(() {
-      board = ["", "", "", "", "", "", "", "",""];
+      board = ["", "", "", "", "", "", "", "", ""];
       currentPlayer = "X";
       winner = "";
       gameover = false;
@@ -79,186 +79,123 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(scaffoldBackgroundColor: Colors.grey[100]),
       home: Scaffold(
-        appBar: AppBar(title: const Text('Tic Tac Toe')),
-        body: Center(
-          child: Column(
-            children: [
-              Text(
-                winner.isNotEmpty
-                    ? "$winner wins!"
-                    : draw
-                    ? "Draw!"
-                    : "Player $currentPlayer's turn",
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Row(
+        appBar: AppBar(
+          title: const Text(
+            "Tic Tac Toe",
+            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+          ),
+        ),
+
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      makeMove(0);
-                    },
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
-                      child: Center(
-                        child: Text(
-                          board[0],
-                          style: const TextStyle(fontSize: 40),
-                        ),
-                      ),
+                  Text(
+                    winner.isNotEmpty
+                        ? "$winner wins!"
+                        : draw
+                        ? "Draw!"
+                        : "Player $currentPlayer's turn",
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      makeMove(1);
-                    },
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
-                      child: Center(
-                        child: Text(
-                          board[1],
-                          style: const TextStyle(fontSize: 40),
+                  const SizedBox(height: 20),
+
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      double boardSize = constraints.maxWidth * 0.9;
+
+                      if (boardSize > 360) {
+                        boardSize = 360;
+                      }
+
+                      return Center(
+                        child: SizedBox(
+                          width: boardSize,
+                          height: boardSize,
+                          child: GridView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                ),
+                            itemCount: 9,
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  makeMove(index);
+                                },
+                                child: Container(
+                                  margin: const EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(
+                                      color: Colors.black26,
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Colors.black12,
+                                        blurRadius: 5,
+                                        offset: Offset(2, 2),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      board[index],
+                                      style: TextStyle(
+                                        fontSize: boardSize * 0.15,
+                                        fontWeight: FontWeight.bold,
+                                        color: board[index] == "X"
+                                            ? Colors.blue
+                                            : Colors.red,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
                         ),
+                      );
+                    },
+                  ),
+
+                  const SizedBox(height: 25),
+                  // Row
+                  ElevatedButton(
+                    onPressed: resetGame,
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 30,
+                        vertical: 15,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: Text(
+                      "Reset Game",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
 
-                  GestureDetector(
-                    onTap: () {
-                      makeMove(2);
-                    },
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
-
-                      child: Center(
-                        child: Text(
-                          board[2],
-                          style: const TextStyle(fontSize: 40),
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Column
                 ],
               ),
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      makeMove(3);
-                    },
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
-                      child: Center(
-                        child: Text(
-                          board[3],
-                          style: const TextStyle(fontSize: 40),
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      makeMove(4);
-                    },
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
-                      child: Center(
-                        child: Text(
-                          board[4],
-                          style: const TextStyle(fontSize: 40),
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      makeMove(5);
-                    },
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
-                      child: Center(
-                        child: Text(
-                          board[5],
-                          style: const TextStyle(fontSize: 40),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      makeMove(6);
-                    },
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
-                      child: Center(
-                        child: Text(
-                          board[6],
-                          style: const TextStyle(fontSize: 40),
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      makeMove(7);
-                    },
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
-                      child: Center(
-                        child: Text(
-                          board[7],
-                          style: const TextStyle(fontSize: 40),
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      makeMove(8);
-                    },
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
-                      child: Center(
-                        child: Text(
-                          board[8],
-                          style: const TextStyle(fontSize: 40),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-
-              // Row
-              ElevatedButton(onPressed: resetGame, child: Text("Reset Game")),
-
-              // Column
-            ],
+            ),
           ),
         ),
       ),
