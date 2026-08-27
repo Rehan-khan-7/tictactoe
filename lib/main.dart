@@ -17,6 +17,16 @@ class _MyAppState extends State<MyApp> {
   String winner = "";
   bool gameover = false;
   bool draw = false;
+  void resetGame() {
+    setState(() {
+      board = ["", "", "", "", "", "", "", "",""];
+      currentPlayer = "X";
+      winner = "";
+      gameover = false;
+      draw = false;
+    });
+  }
+
   void checkWinner() {
     List<List<int>> winningPatterns = [
       [0, 1, 2],
@@ -243,6 +253,11 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ],
               ),
+
+              // Row
+              ElevatedButton(onPressed: resetGame, child: Text("Reset Game")),
+
+              // Column
             ],
           ),
         ),
