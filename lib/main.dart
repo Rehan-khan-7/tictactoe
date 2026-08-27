@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
   bool draw = false;
   void resetGame() {
     setState(() {
-      board = ["", "", "", "", "", "", "", "",""];
+      board = ["", "", "", "", "", "", "", "", ""];
       currentPlayer = "X";
       winner = "";
       gameover = false;
@@ -79,10 +79,20 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(scaffoldBackgroundColor: Colors.grey[100]),
       home: Scaffold(
-        appBar: AppBar(title: const Text('Tic Tac Toe')),
+        appBar: AppBar(
+          title: const Text(
+            "Tic Tac Toe",
+            style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+          ),
+          
+        ),
+        
         body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 winner.isNotEmpty
@@ -91,10 +101,11 @@ class _MyAppState extends State<MyApp> {
                     ? "Draw!"
                     : "Player $currentPlayer's turn",
                 style: const TextStyle(
-                  fontSize: 24,
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              const SizedBox(height:20),
               Row(
                 children: [
                   GestureDetector(
@@ -104,11 +115,26 @@ class _MyAppState extends State<MyApp> {
                     child: Container(
                       width: 100,
                       height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black26, width: 2),
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 5,
+                            offset: Offset(2, 2),
+                          ),
+                        ],
+                      ),
                       child: Center(
                         child: Text(
                           board[0],
-                          style: const TextStyle(fontSize: 40),
+                          style: TextStyle(
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold,
+                            color: board[0] == "X" ? Colors.blue : Colors.red,
+                          ),
                         ),
                       ),
                     ),
@@ -120,11 +146,26 @@ class _MyAppState extends State<MyApp> {
                     child: Container(
                       width: 100,
                       height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black26, width: 2),
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 5,
+                            offset: Offset(2, 2),
+                          ),
+                        ],
+                      ),
                       child: Center(
                         child: Text(
                           board[1],
-                          style: const TextStyle(fontSize: 40),
+                          style: TextStyle(
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold,
+                            color: board[1] == "X" ? Colors.blue : Colors.red,
+                          ),
                         ),
                       ),
                     ),
@@ -137,12 +178,26 @@ class _MyAppState extends State<MyApp> {
                     child: Container(
                       width: 100,
                       height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
-
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black26, width: 2),
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 5,
+                            offset: Offset(2, 2),
+                          ),
+                        ],
+                      ),
                       child: Center(
                         child: Text(
                           board[2],
-                          style: const TextStyle(fontSize: 40),
+                          style: TextStyle(
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold,
+                            color: board[2] == "X" ? Colors.blue : Colors.red,
+                          ),
                         ),
                       ),
                     ),
@@ -158,11 +213,26 @@ class _MyAppState extends State<MyApp> {
                     child: Container(
                       width: 100,
                       height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black26, width: 2),
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 5,
+                            offset: Offset(2, 2),
+                          ),
+                        ],
+                      ),
                       child: Center(
                         child: Text(
                           board[3],
-                          style: const TextStyle(fontSize: 40),
+                          style: TextStyle(
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold,
+                            color: board[3] == "X" ? Colors.blue : Colors.red,
+                          ),
                         ),
                       ),
                     ),
@@ -174,11 +244,26 @@ class _MyAppState extends State<MyApp> {
                     child: Container(
                       width: 100,
                       height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black26, width: 2),
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 5,
+                            offset: Offset(2, 2),
+                          ),
+                        ],
+                      ),
                       child: Center(
                         child: Text(
                           board[4],
-                          style: const TextStyle(fontSize: 40),
+                          style: TextStyle(
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold,
+                            color: board[4] == "X" ? Colors.blue : Colors.red,
+                          ),
                         ),
                       ),
                     ),
@@ -190,11 +275,26 @@ class _MyAppState extends State<MyApp> {
                     child: Container(
                       width: 100,
                       height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black26, width: 2),
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 5,
+                            offset: Offset(2, 2),
+                          ),
+                        ],
+                      ),
                       child: Center(
                         child: Text(
                           board[5],
-                          style: const TextStyle(fontSize: 40),
+                          style: TextStyle(
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold,
+                            color: board[5] == "X" ? Colors.blue : Colors.red,
+                          ),
                         ),
                       ),
                     ),
@@ -210,11 +310,26 @@ class _MyAppState extends State<MyApp> {
                     child: Container(
                       width: 100,
                       height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black26, width: 2),
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 5,
+                            offset: Offset(2, 2),
+                          ),
+                        ],
+                      ),
                       child: Center(
                         child: Text(
                           board[6],
-                          style: const TextStyle(fontSize: 40),
+                          style: TextStyle(
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold,
+                            color: board[6] == "X" ? Colors.blue : Colors.red,
+                          ),
                         ),
                       ),
                     ),
@@ -226,11 +341,26 @@ class _MyAppState extends State<MyApp> {
                     child: Container(
                       width: 100,
                       height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black26, width: 2),
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 5,
+                            offset: Offset(2, 2),
+                          ),
+                        ],
+                      ),
                       child: Center(
                         child: Text(
                           board[7],
-                          style: const TextStyle(fontSize: 40),
+                          style: TextStyle(
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold,
+                            color: board[7] == "X" ? Colors.blue : Colors.red,
+                          ),
                         ),
                       ),
                     ),
@@ -242,20 +372,47 @@ class _MyAppState extends State<MyApp> {
                     child: Container(
                       width: 100,
                       height: 100,
-                      decoration: BoxDecoration(border: Border.all()),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black26, width: 2),
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 5,
+                            offset: Offset(2, 2),
+                          ),
+                        ],
+                      ),
                       child: Center(
                         child: Text(
                           board[8],
-                          style: const TextStyle(fontSize: 40),
+                          style: TextStyle(
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold,
+                            color: board[8] == "X" ? Colors.blue : Colors.red,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ],
               ),
-
+              const SizedBox(height: 25),
               // Row
-              ElevatedButton(onPressed: resetGame, child: Text("Reset Game")),
+              ElevatedButton(
+                onPressed: resetGame,
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: Text(
+                  "Reset Game",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ),
 
               // Column
             ],
