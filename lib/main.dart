@@ -36,11 +36,13 @@ String currentPlayer = "X";
                   GestureDetector(
                     onTap: () {
                       setState(() {
+                        if (board[0].isEmpty){
                         board[0]=currentPlayer;
                         if (currentPlayer == "X") {
                           currentPlayer = "O";
                         }else{
                           currentPlayer = "X";
+                        }
                         }
                       });
                     },
@@ -63,13 +65,14 @@ String currentPlayer = "X";
                    GestureDetector(
                     onTap: () {
                      setState(() {
+                        if (board[1].isEmpty){
                         board[1]=currentPlayer;
                         if (currentPlayer == "X") {
                           currentPlayer = "O";
                         }else{
                           currentPlayer = "X";
                         }
-                      
+                        }
                       });
                     },
                     child: Container(
@@ -92,13 +95,14 @@ String currentPlayer = "X";
                   GestureDetector(
                     onTap: () {
                       setState(() {
+                        if (board[2].isEmpty){
                         board[2]=currentPlayer;
                         if (currentPlayer == "X") {
                           currentPlayer = "O";
                         }else{
                           currentPlayer = "X";
                         }
-                        
+                        }
                       });
                     },
                     child: Container(
@@ -125,13 +129,14 @@ String currentPlayer = "X";
                   GestureDetector(
                     onTap: () {
                       setState(() {
+                        if (board[3].isEmpty){
                         board[3]=currentPlayer;
                         if (currentPlayer == "X") {
                           currentPlayer = "O";
                         }else{
                           currentPlayer = "X";
                         }
-                        
+                        }
                       });
                     },
                     child: Container(
@@ -153,13 +158,14 @@ String currentPlayer = "X";
                   GestureDetector(
                     onTap: () {
                       setState(() {
+                        if (board[4].isEmpty){
                         board[4]=currentPlayer;
                         if (currentPlayer == "X") {
                           currentPlayer = "O";
                         }else{
                           currentPlayer = "X";
                         }
-                        
+                        }
                       });
                     },
                     child: Container(
@@ -181,13 +187,14 @@ String currentPlayer = "X";
                   GestureDetector(
                     onTap: () {
                       setState(() {
+                        if (board[5].isEmpty){
                         board[5]=currentPlayer;
                         if (currentPlayer == "X") {
                           currentPlayer = "O";
                         }else{
                           currentPlayer = "X";
                         }
-                        
+                        }
                       });
                     },
                     child: Container(
@@ -213,13 +220,14 @@ String currentPlayer = "X";
                   GestureDetector(
                     onTap: () {
                       setState(() {
+                        if (board[6].isEmpty){
                         board[6]=currentPlayer;
                         if (currentPlayer == "X") {
                           currentPlayer = "O";
                         }else{
                           currentPlayer = "X";
                         }
-                        
+                        }
                       });
                     },
                     child: Container(
@@ -241,13 +249,14 @@ String currentPlayer = "X";
                   GestureDetector(
                     onTap: () {
                       setState(() {
+                        if (board[7].isEmpty){
                         board[7]=currentPlayer;
                         if (currentPlayer == "X") {
                           currentPlayer = "O";
                         }else{
                           currentPlayer = "X";
                         }
-                        
+                        }
                       });
                     },
                     child: Container(
@@ -269,13 +278,14 @@ String currentPlayer = "X";
                   GestureDetector(
                     onTap: () {
                       setState(() {
+                        if (board[8].isEmpty){
                         board[8]=currentPlayer;
                         if (currentPlayer == "X") {
                           currentPlayer = "O";
                         }else{
                           currentPlayer = "X";
                         }
-                        
+                        }
                       });
                     },
                     child: Container(
