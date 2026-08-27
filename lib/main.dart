@@ -41,7 +41,6 @@ class _MyAppState extends State<MyApp> {
                         }else{
                           currentPlayer = "X";
                         }
-                        print(board[0]);
                       });
                     },
                     child: Container(
@@ -50,6 +49,14 @@ class _MyAppState extends State<MyApp> {
                     decoration: BoxDecoration(
                     border: Border.all(),
                     ),
+                    child: Center(
+                    child: Text(
+                    board[0],
+                    style: const TextStyle(
+                    fontSize: 40,
+                    ),
+                    ),
+                   ),
                   ),
                   ),
                    GestureDetector(
@@ -61,7 +68,7 @@ class _MyAppState extends State<MyApp> {
                         }else{
                           currentPlayer = "X";
                         }
-                        print(board[1]);
+                      
                       });
                     },
                     child: Container(
@@ -70,6 +77,14 @@ class _MyAppState extends State<MyApp> {
                     decoration: BoxDecoration(
                     border: Border.all(),
                     ),
+                    child: Center(
+      child: Text(
+        board[1],
+        style: const TextStyle(
+          fontSize: 40,
+        ),
+      ),
+    ),
                   ),
                   ),
                   
@@ -82,7 +97,7 @@ class _MyAppState extends State<MyApp> {
                         }else{
                           currentPlayer = "X";
                         }
-                        print(board[2]);
+                        
                       });
                     },
                     child: Container(
@@ -92,6 +107,14 @@ class _MyAppState extends State<MyApp> {
                     border: Border.all(),
                     ),
                   ),
+                  child: Center(
+      child: Text(
+        board[2],
+        style: const TextStyle(
+          fontSize: 40,
+        ),
+      ),
+    ),
                   ),
                 ],
               ),
@@ -106,7 +129,7 @@ class _MyAppState extends State<MyApp> {
                         }else{
                           currentPlayer = "X";
                         }
-                        print(board[3]);
+                        
                       });
                     },
                     child: Container(
@@ -115,6 +138,14 @@ class _MyAppState extends State<MyApp> {
                     decoration: BoxDecoration(
                     border: Border.all(),
                     ),
+                    child: Center(
+      child: Text(
+        board[3],
+        style: const TextStyle(
+          fontSize: 40,
+        ),
+      ),
+    ),
                   ),
                   ),
                   GestureDetector(
@@ -126,7 +157,7 @@ class _MyAppState extends State<MyApp> {
                         }else{
                           currentPlayer = "X";
                         }
-                        print(board[4]);
+                        
                       });
                     },
                     child: Container(
@@ -135,6 +166,14 @@ class _MyAppState extends State<MyApp> {
                     decoration: BoxDecoration(
                     border: Border.all(),
                     ),
+                    child: Center(
+      child: Text(
+        board[4],
+        style: const TextStyle(
+          fontSize: 40,
+        ),
+      ),
+    ),
                   ),
                   ),
                   GestureDetector(
@@ -146,7 +185,7 @@ class _MyAppState extends State<MyApp> {
                         }else{
                           currentPlayer = "X";
                         }
-                        print(board[5]);
+                        
                       });
                     },
                     child: Container(
@@ -155,6 +194,14 @@ class _MyAppState extends State<MyApp> {
                     decoration: BoxDecoration(
                     border: Border.all(),
                     ),
+                    child: Center(
+      child: Text(
+        board[5],
+        style: const TextStyle(
+          fontSize: 40,
+        ),
+      ),
+    ),
                   ),
                   ),
                 ],
@@ -170,7 +217,7 @@ class _MyAppState extends State<MyApp> {
                         }else{
                           currentPlayer = "X";
                         }
-                        print(board[6]);
+                        
                       });
                     },
                     child: Container(
@@ -179,6 +226,14 @@ class _MyAppState extends State<MyApp> {
                     decoration: BoxDecoration(
                     border: Border.all(),
                     ),
+                    child: Center(
+      child: Text(
+        board[6],
+        style: const TextStyle(
+          fontSize: 40,
+        ),
+      ),
+    ),
                   ),
                   ),
                   GestureDetector(
@@ -190,7 +245,7 @@ class _MyAppState extends State<MyApp> {
                         }else{
                           currentPlayer = "X";
                         }
-                        print(board[7]);
+                        
                       });
                     },
                     child: Container(
@@ -199,6 +254,14 @@ class _MyAppState extends State<MyApp> {
                     decoration: BoxDecoration(
                     border: Border.all(),
                     ),
+                    child: Center(
+      child: Text(
+        board[7],
+        style: const TextStyle(
+          fontSize: 40,
+        ),
+      ),
+    ),
                   ),
                   ),
                   GestureDetector(
@@ -210,7 +273,7 @@ class _MyAppState extends State<MyApp> {
                         }else{
                           currentPlayer = "X";
                         }
-                        print(board[8]);
+                        
                       });
                     },
                     child: Container(
@@ -219,6 +282,14 @@ class _MyAppState extends State<MyApp> {
                     decoration: BoxDecoration(
                     border: Border.all(),
                     ),
+                    child: Center(
+      child: Text(
+        board[8],
+        style: const TextStyle(
+          fontSize: 40,
+        ),
+      ),
+    ),
                   ),
                   ),
                 ],
