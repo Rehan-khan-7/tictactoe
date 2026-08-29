@@ -14,6 +14,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   List<String> board = ["", "", "", "", "", "", "", "", ""];
   String currentPlayer = "X";
+  int xScore = 0;
+  int oScore = 0;
   String winner = "";
   bool gameover = false;
   bool draw = false;
@@ -45,6 +47,10 @@ class _MyAppState extends State<MyApp> {
           board[pattern[1]] == board[pattern[2]]) {
         winner = board[pattern[0]];
         gameover = true;
+        if (winner == "X")
+          xScore++;
+        else
+          oScore++;
       }
     }
   }
@@ -95,6 +101,32 @@ class _MyAppState extends State<MyApp> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "X: $xScore",
+                        style: const TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue,
+                        ),
+                      ),
+
+                      const SizedBox(width: 40),
+
+                      Text(
+                        "O: $oScore",
+                        style: const TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 15),
                   Text(
                     winner.isNotEmpty
                         ? "$winner wins!"
