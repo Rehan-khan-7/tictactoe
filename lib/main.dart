@@ -34,6 +34,20 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void newGame() {
+    setState(() {
+      board = ["", "", "", "", "", "", "", "", ""];
+      currentPlayer = "X";
+      xScore = 0;
+      oScore = 0;
+      xStarts = true;
+      winner = "";
+      gameover = false;
+      draw = false;
+      winningCells=[];
+    });
+  }
+
   void checkWinner() {
     List<List<int>> winningPatterns = [
       [0, 1, 2],
@@ -245,24 +259,51 @@ class _MyAppState extends State<MyApp> {
 
                   const SizedBox(height: 25),
                   // Row
-                  ElevatedButton(
-                    onPressed: resetGame,
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 30,
-                        vertical: 15,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: resetGame,
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 25,
+                            vertical: 15,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        child: const Text(
+                          "Reset Game",
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+
+                      const SizedBox(width: 15),
+
+                      ElevatedButton(
+                        onPressed: newGame,
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 25,
+                            vertical: 15,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        child: const Text(
+                          "New Game",
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
-                    ),
-                    child: Text(
-                      "Reset Game",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    ],
                   ),
 
                   // Column
