@@ -19,10 +19,13 @@ class _MyAppState extends State<MyApp> {
   String winner = "";
   bool gameover = false;
   bool draw = false;
+  bool xStarts = true;
+
   void resetGame() {
     setState(() {
       board = ["", "", "", "", "", "", "", "", ""];
-      currentPlayer = "X";
+      xStarts = !xStarts;
+      currentPlayer = xStarts ? "X" : "O";
       winner = "";
       gameover = false;
       draw = false;
@@ -47,10 +50,15 @@ class _MyAppState extends State<MyApp> {
           board[pattern[1]] == board[pattern[2]]) {
         winner = board[pattern[0]];
         gameover = true;
-        if (winner == "X")
+        
+        if (winner == "X"){
           xScore++;
-        else
+          xStarts=true;
+        }
+        else{
           oScore++;
+          xStarts= false;
+        }
       }
     }
   }
