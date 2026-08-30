@@ -137,15 +137,42 @@ class _MyAppState extends State<MyApp> {
                   ),
 
                   const SizedBox(height: 15),
-                  Text(
-                    winner.isNotEmpty
-                        ? "$winner wins!"
-                        : draw
-                        ? "Draw!"
-                        : "Player $currentPlayer's turn",
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
+                      vertical: 12,
+                    ),
+                    decoration: BoxDecoration(
+                      color: winner.isNotEmpty
+                          ? Colors.green[50]
+                          : draw
+                          ? Colors.orange[50]
+                          : Colors.blue[50],
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(
+                        color: winner.isNotEmpty
+                            ? Colors.green
+                            : draw
+                            ? Colors.orange
+                            : Colors.blue,
+                        width: 2,
+                      ),
+                    ),
+                    child: Text(
+                      winner.isNotEmpty
+                          ? "$winner Wins!"
+                          : draw
+                          ? "It's a Draw!"
+                          : "Player $currentPlayer's Turn",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: winner.isNotEmpty
+                            ? Colors.green[700]
+                            : draw
+                            ? Colors.orange[700]
+                            : Colors.blue[700],
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
