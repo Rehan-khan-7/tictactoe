@@ -12,6 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  List<int> winningCells = [];
   List<String> board = ["", "", "", "", "", "", "", "", ""];
   String currentPlayer = "X";
   int xScore = 0;
@@ -29,6 +30,7 @@ class _MyAppState extends State<MyApp> {
       winner = "";
       gameover = false;
       draw = false;
+      winningCells = [];
     });
   }
 
@@ -49,15 +51,15 @@ class _MyAppState extends State<MyApp> {
           board[pattern[0]] == board[pattern[1]] &&
           board[pattern[1]] == board[pattern[2]]) {
         winner = board[pattern[0]];
+        winningCells = pattern;
         gameover = true;
-        
-        if (winner == "X"){
+
+        if (winner == "X") {
           xScore++;
-          xStarts=true;
-        }
-        else{
+          xStarts = true;
+        } else {
           oScore++;
-          xStarts= false;
+          xStarts = false;
         }
       }
     }
@@ -175,9 +177,13 @@ class _MyAppState extends State<MyApp> {
                                 child: Container(
                                   margin: const EdgeInsets.all(4),
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: winningCells.contains(index)
+                                        ? Colors.green[100]
+                                        : Colors.white,
                                     border: Border.all(
-                                      color: Colors.black26,
+                                      color: winningCells.contains(index)
+                                          ? Colors.green
+                                          : Colors.black26,
                                       width: 2,
                                     ),
                                     borderRadius: BorderRadius.circular(12),
