@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
   List<int> winningCells = [];
   List<String> board = ["", "", "", "", "", "", "", "", ""];
   String currentPlayer = "X";
@@ -21,8 +21,29 @@ class _MyAppState extends State<MyApp> {
   bool gameover = false;
   bool draw = false;
   bool xStarts = true;
+  late AnimationController _winAnimationController;
+  late Animation<double> _cutAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _winAnimationController = AnimationController(
+      duration: const Duration(milliseconds: 800),
+      vsync: this,
+    );
+    _cutAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(parent: _winAnimationController, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _winAnimationController.dispose();
+    super.dispose();
+  }
 
   void resetGame() {
+    _winAnimationController.reset();
     setState(() {
       board = ["", "", "", "", "", "", "", "", ""];
       xStarts = !xStarts;
@@ -35,6 +56,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   void newGame() {
+    _winAnimationController.reset();
     setState(() {
       board = ["", "", "", "", "", "", "", "", ""];
       currentPlayer = "X";
@@ -67,13 +89,14 @@ class _MyAppState extends State<MyApp> {
         winner = board[pattern[0]];
         winningCells = pattern;
         gameover = true;
+        _winAnimationController.forward();
 
         if (winner == "X") {
           xScore++;
-          xStarts = true;
+          xStarts = false;
         } else {
           oScore++;
-          xStarts = false;
+          xStarts = true;
         }
       }
     }
@@ -116,7 +139,7 @@ class _MyAppState extends State<MyApp> {
           title: const Text(
             "Tic Tac Toe",
             style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-          ),
+          )
         ),
 
         body: SafeArea(
@@ -211,44 +234,69 @@ class _MyAppState extends State<MyApp> {
                                 ),
                             itemCount: 9,
                             itemBuilder: (context, index) {
-                              return GestureDetector(
-                                onTap: () {
-                                  makeMove(index);
+                              bool isWinningCell = winningCells.contains(index);
+                              return AnimatedBuilder(
+                                animation: _cutAnimation,
+                                builder: (context, child) {
+                                  double animationValue = _cutAnimation.value;
+                                  
+                                  return GestureDetector(
+                                    onTap: () {
+                                      makeMove(index);
+                                    },
+                                    child: Transform(
+                                      alignment: Alignment.center,
+                                      transform: Matrix4.identity()
+                                        ..setEntry(3, 2, 0.001)
+                                        ..rotateZ(isWinningCell ? animationValue * 0.3 : 0)
+                                        ..scale(isWinningCell ? 1 - (animationValue * 0.05) : 1.0),
+                                      child: Container(
+                                        margin: const EdgeInsets.all(4),
+                                        decoration: BoxDecoration(
+                                          color: isWinningCell
+                                              ? Color.lerp(
+                                                  Colors.green[100],
+                                                  Colors.yellow[300],
+                                                  (animationValue * 2 - 1).clamp(0, 1),
+                                                )
+                                              : Colors.white,
+                                          border: Border.all(
+                                            color: isWinningCell
+                                                ? Color.lerp(
+                                                    Colors.green,
+                                                    Colors.amber,
+                                                    animationValue.clamp(0, 1),
+                                                  ) ?? Colors.green
+                                                : Colors.black26,
+                                            width: isWinningCell ? 2 + (animationValue * 2) : 2,
+                                          ),
+                                          borderRadius: BorderRadius.circular(12),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: isWinningCell
+                                                  ? Colors.amber.withOpacity(animationValue * 0.8)
+                                                  : Colors.black12,
+                                              blurRadius: isWinningCell ? 5 + (animationValue * 10) : 5,
+                                              offset: Offset(2, 2),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            board[index],
+                                            style: TextStyle(
+                                              fontSize: boardSize * 0.15,
+                                              fontWeight: FontWeight.bold,
+                                              color: board[index] == "X"
+                                                  ? Colors.blue
+                                                  : Colors.red,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
                                 },
-                                child: Container(
-                                  margin: const EdgeInsets.all(4),
-                                  decoration: BoxDecoration(
-                                    color: winningCells.contains(index)
-                                        ? Colors.green[100]
-                                        : Colors.white,
-                                    border: Border.all(
-                                      color: winningCells.contains(index)
-                                          ? Colors.green
-                                          : Colors.black26,
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(12),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        color: Colors.black12,
-                                        blurRadius: 5,
-                                        offset: Offset(2, 2),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      board[index],
-                                      style: TextStyle(
-                                        fontSize: boardSize * 0.15,
-                                        fontWeight: FontWeight.bold,
-                                        color: board[index] == "X"
-                                            ? Colors.blue
-                                            : Colors.red,
-                                      ),
-                                    ),
-                                  ),
-                                ),
                               );
                             },
                           ),
